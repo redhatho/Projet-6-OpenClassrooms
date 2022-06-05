@@ -10,7 +10,6 @@ const userRoutes = require('./routes/user');
 const app = express();
 app.use(helmet());
 
-
 mongoose.connect(`mongodb+srv://${process.env.DB_USERNAME}:${process.env.DB_PASSWORD}@${process.env.DB_CLUSTER}.mongodb.net/${process.env.DB_NAME}?retryWrites=true&w=majority`,
     {
         useNewUrlParser: true,
@@ -19,7 +18,6 @@ mongoose.connect(`mongodb+srv://${process.env.DB_USERNAME}:${process.env.DB_PASS
 )
     .then(() => console.log('Connexion à MongoDB réussie !'))
     .catch(() => console.log('Connexion à MongoDB échouée !'));
-
 
 app.use((req, res, next) => {
     res.setHeader('Access-Control-Allow-Origin', '*');
@@ -37,4 +35,3 @@ app.use('/api/auth', userRoutes);
 
 console.log(process.env);
 module.exports = app;
-
